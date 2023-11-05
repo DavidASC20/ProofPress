@@ -5,12 +5,11 @@ import mongoose from 'mongoose';
 import { postRouter } from "./routes/posts.js";
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
-app.use("create-posts", postRouter);
+mongoose.connect("mongodb+srv://user1:for_pp@cluster0.cmfvafi.mongodb.net/");
 
-mongoose.connect();
+app.use("/create-posts", postRouter);
 
-app.listen(3001, () => console.log("server started"));
+app.listen(3003, () => console.log("server started"));
