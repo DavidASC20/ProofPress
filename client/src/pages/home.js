@@ -1,7 +1,13 @@
+import { Container } from "react-dom";
+
 export const Home = () => {
   return(
     <div>
-      Home
+      <Container >
+        <h1>
+          
+        </h1>
+      </Container>
     </div>
   );
 }
