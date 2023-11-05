@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://user1:for_pp@cluster0.cmfvafi.mongodb.net/");
+mongoose.connect();
 
 app.use("/create-posts", postRouter);
 
