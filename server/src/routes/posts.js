@@ -8,7 +8,7 @@ router.post("/create", async(req, res) => {
 
   const newPost = new PostModel({poster_address, post_content});
   await newPost.save();
-  res.json({message: "postt registered successfully"});
+  res.json({message: "post registered successfully"});
 });
 
 export { router as postRouter };
