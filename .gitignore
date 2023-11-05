@@ -1,0 +1,17 @@
+# Dependency directory
+node_modules/
+
+# Build directory
+build/
+
+# Truffle build directory
+build/contracts/
+
+# macOS system files
+.DS_Store
+
+# Environment variables
+.env
+
+# Private keys and secrets
+*.secret
