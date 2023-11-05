@@ -17,6 +17,10 @@ const Login = () => {
     // Check if MetaMask is installed
     if (window.ethereum) {
       setIsMetaMaskInstalled(true);
+      const address = localStorage.getItem('userAddress');
+      if (address) {
+        setUserAddress(address);
+      }
     }
   }, []);
 
@@ -27,6 +31,7 @@ const Login = () => {
         const web3 = new Web3(window.ethereum);
         const accounts = await web3.eth.getAccounts();
         setUserAddress(accounts[0]);
+        localStorage.setItem('userAddress', accounts[0]); // Save to localStorage
       } catch (error) {
         console.error('MetaMask connection error:', error);
       }
@@ -34,11 +39,14 @@ const Login = () => {
       console.error('MetaMask not found in your browser.');
     }
   }
+  
 
   const disconnectFromMetaMask = () => {
     // Clear user-related data or tokens
     setUserAddress('');
+    localStorage.removeItem('userAddress'); // Remove from localStorage
   }
+  
 
   return (
     <div className="login">
