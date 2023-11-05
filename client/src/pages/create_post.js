@@ -1,7 +1,7 @@
-export const CreatePost = () => {
+export const CreatePosts = () => {
   return(
     <div>
-      
+      Create Posts
     </div>
-  )
+  );
 }
