@@ -12,4 +12,4 @@ mongoose.connect();
 
 app.use("/create-posts", postRouter);
 
-app.listen(3003, () => console.log("server started"));
+app.listen(3001, () => console.log("server started"));
