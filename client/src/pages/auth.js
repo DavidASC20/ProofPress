@@ -1,70 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import Web3 from 'web3';
+// import React, { useState, useEffect } from 'react';
 
 export const Auth = () => {
   return (
-    <div className="auth">
-      <Login />
+    <div>
+      temp auth
+      <p>this page will handle client side authentication with metamask
+      and send data to the backend to create a user or check if user exists</p>
     </div>
-  );
-};
+  )
+}
+// import Web3 from 'web3';
 
-const Login = () => {
-  const [userAddress, setUserAddress] = useState('');
-  const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
+// export const Auth = () => {
+//   return (
+//     <div className="auth">
+//       <Login />
+//     </div>
+//   );
+// };
 
-  useEffect(() => {
-    // Check if MetaMask is installed
-    if (window.ethereum) {
-      setIsMetaMaskInstalled(true);
-      const address = localStorage.getItem('userAddress');
-      if (address) {
-        setUserAddress(address);
-      }
-    }
-  }, []);
+// const Login = () => {
+//   const [userAddress, setUserAddress] = useState('');
+//   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
 
-  const connectToMetaMask = async () => {
-    if (isMetaMaskInstalled) {
-      try {
-        await window.ethereum.enable();
-        const web3 = new Web3(window.ethereum);
-        const accounts = await web3.eth.getAccounts();
-        setUserAddress(accounts[0]);
-        localStorage.setItem('userAddress', accounts[0]); // Save to localStorage
-      } catch (error) {
-        console.error('MetaMask connection error:', error);
-      }
-    } else {
-      console.error('MetaMask not found in your browser.');
-    }
-  }
+//   useEffect(() => {
+//     // Check if MetaMask is installed
+//     if (window.ethereum) {
+//       setIsMetaMaskInstalled(true);
+//       const address = localStorage.getItem('userAddress');
+//       if (address) {
+//         setUserAddress(address);
+//       }
+//     }
+//   }, []);
+
+//   const connectToMetaMask = async () => {
+//     if (isMetaMaskInstalled) {
+//       try {
+//         await window.ethereum.enable();
+//         const web3 = new Web3(window.ethereum);
+//         const accounts = await web3.eth.getAccounts();
+//         setUserAddress(accounts[0]);
+//         localStorage.setItem('userAddress', accounts[0]); // Save to localStorage
+//       } catch (error) {
+//         console.error('MetaMask connection error:', error);
+//       }
+//     } else {
+//       console.error('MetaMask not found in your browser.');
+//     }
+//   }
   
 
-  const disconnectFromMetaMask = () => {
-    // Clear user-related data or tokens
-    setUserAddress('');
-    localStorage.removeItem('userAddress'); // Remove from localStorage
-  }
+//   const disconnectFromMetaMask = () => {
+//     // Clear user-related data or tokens
+//     setUserAddress('');
+//     localStorage.removeItem('userAddress'); // Remove from localStorage
+//   }
   
 
-  return (
-    <div className="login">
-      <h2>Login with MetaMask</h2>
-      {isMetaMaskInstalled ? (
-        <div>
-          {userAddress ? (
-            <div>
-              <button onClick={disconnectFromMetaMask}>Disconnect</button>
-              <p>Connected Ethereum Address: {userAddress}</p>
-            </div>
-          ) : (
-            <button onClick={connectToMetaMask}>Connect to MetaMask</button>
-          )}
-        </div>
-      ) : (
-        <p>MetaMask is not installed in your browser.</p>
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div className="login">
+//       <h2>Login with MetaMask</h2>
+//       {isMetaMaskInstalled ? (
+//         <div>
+//           {userAddress ? (
+//             <div>
+//               <button onClick={disconnectFromMetaMask}>Disconnect</button>
+//               <p>Connected Ethereum Address: {userAddress}</p>
+//             </div>
+//           ) : (
+//             <button onClick={connectToMetaMask}>Connect to MetaMask</button>
+//           )}
+//         </div>
+//       ) : (
+//         <p>MetaMask is not installed in your browser.</p>
+//       )}
+//     </div>
+//   );
+// };

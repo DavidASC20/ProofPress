@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 
 export const Navbar = () => {
   return(
+    // change the MyProfile to Login / MyProfile by checking to session when user is logged in
     <div>
       <Container className="d-flex align-items-center justify-content-center">
         <Link to="/" className="mx-3"> Home </Link>
