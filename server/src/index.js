@@ -12,9 +12,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose.connect("mongodb+srv://user1:user1_1234@cluster0.cmfvafi.mongodb.net/");
 
 app.use("/create-posts", postsRouter);
-app.use("/auth-users", userRouter);
+// app.use("/auth-users", userRouter);
 
 app.listen(3001, () => console.log("server started"));

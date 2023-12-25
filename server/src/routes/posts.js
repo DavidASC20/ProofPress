@@ -10,7 +10,7 @@ router.get("/get", async (req, res) => {
     const response = await PostModel.find({});
     res.json(response);
   } catch(err) {
-
+    res.json(err);
   }
 })
 
@@ -18,13 +18,21 @@ router.get("/get", async (req, res) => {
 // use axios later to receive data from frontend
 // data should include users ethereum address and the post content
 router.post("/create", async(req, res) => {
-  const post = new PostModel(req.body);
-  try {
-    const response = await post.save();
-    res.json(response);
-  } catch(err) {
+  const {ethereum_address, post_content} = req.body;
+  const new_post = new PostModel({ethereum_address, post_content});
+  await new_post.save();
+  res.json("post registered successfully");
 
-  }
+  // console.log("trying to create a new post here");
+  // const post = new PostModel(req.body);
+  // try {
+  //   console.log("trying to save");
+  //   const response = await post.save();
+  //   console.log("saved");
+  //   res.json(response);
+  // } catch(err) {
+  //   res.json(err);
+  // }
 });
 
 export { router as postsRouter };
