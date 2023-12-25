@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://user1:user1_1234@cluster0.cmfvafi.mongodb.net/");
+mongoose.connect(process.env.MONGODB_URL);
 
 app.use("/create-posts", postsRouter);
 // app.use("/auth-users", userRouter);
