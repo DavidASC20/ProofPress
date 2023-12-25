@@ -14,6 +14,9 @@ router.get("/get", async (req, res) => {
   }
 })
 
+
+// use axios later to receive data from frontend
+// data should include users ethereum address and the post content
 router.post("/create", async(req, res) => {
   const post = new PostModel(req.body);
   try {
