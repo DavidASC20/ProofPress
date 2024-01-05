@@ -15,6 +15,6 @@ app.use(cors());
 mongoose.connect(process.env.MONGODB_URL);
 
 app.use("/create-posts", postsRouter);
-// app.use("/auth-users", userRouter);
+app.use("/auth-users", userRouter);
 
 app.listen(3001, () => console.log("server started"));

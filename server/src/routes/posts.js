@@ -35,7 +35,7 @@ router.put("/update_saved", async(req, res) => {
   try {
     const post = await PostModel.findById(req.body.postID);
     const user = await UserModel.findById(req.body.userID);
-    user.saved_posts.push(post);
+    user.saved_posts.push(post); 
     await user.save();
     res.json({saved_posts: user.saved_posts});
   } catch(err) {
