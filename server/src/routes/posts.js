@@ -7,8 +7,7 @@ const router = express.Router();
 
 // get all recipes in the database
 // this will show up on the homepage
-// will create another get router to show a specifics users posts
-router.get("/get", async (req, res) => {
+router.get("/get_all", async (req, res) => {
   try {
     const response = await PostModel.find({});
     res.json(response);
@@ -17,6 +16,27 @@ router.get("/get", async (req, res) => {
   }
 })
 
+// router to show a specifics users posts
+router.get("get_saved/ids", async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.body.userID);
+    res.json({saved_posts: user?.saved_posts});
+  } catch(err) {
+    res.json(err);
+  }
+})
+
+router.get("get_saved", async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.body.userID);
+    const saved_posts = await PostModel.find({
+      _id: {$in: user.saved_posts}
+    })
+    res.json(saved_posts);
+  } catch(err) {
+    res.json(err);
+  }
+})
 
 // use axios later to receive data from frontend
 // data should include users ethereum address and the post content
