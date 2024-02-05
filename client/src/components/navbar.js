@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 export const Navbar = () => {
-  const userAddress = localStorage.getItem('userAddress');
+  const check_storage = () => {
+    console.log("checking local storage");
+    var eth_address = localStorage.getItem("userAddress");
+    console.log(eth_address);
+  }
 
   return(
     <div>
@@ -10,12 +14,10 @@ export const Navbar = () => {
         <Link to="/" className="mx-3"> Home </Link>
         <Link to="/how-to" className="mx-3"> Getting Started </Link>
         <Link to="/create-posts" className="mx-3"> Create Posts </Link>
-        {userAddress ? (
-          <Link to="/logout" className="mx-3"> Logout </Link>
-        ) : (
-          <Link to="/auth" className="mx-3"> Login </Link>
-        )}
+        <Link to="/auth" className="mx-3">Connect to MetaMask</Link>
       </Container>
+      <button onClick={check_storage}>check storage checking</button>
+
     </div>
   );
 }

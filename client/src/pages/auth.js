@@ -51,6 +51,7 @@ const Login = () => {
     // Clear user-related data or tokens
     setUserAddress('');
     localStorage.removeItem('userAddress'); // Remove from localStorage
+    console.log("disconnecting");
   }
   
 
