@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Web3 from 'web3';
+import { useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
   return (
@@ -13,6 +14,8 @@ export const Auth = () => {
 const Login = () => {
   const [userAddress, setUserAddress] = useState('');
   const [isMetaMaskInstalled, setIsMetaMaskInstalled] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if MetaMask is installed
@@ -38,6 +41,10 @@ const Login = () => {
         // send address to database in the backend
         const response = await axios.post("http://localhost:3001/auth-users/login", {ethereum_address: accounts[0]});
         console.log(response);
+
+        // send to home page
+        navigate("/");
+        window.location.reload();
       } catch (error) {
         console.error(error);
       }
@@ -51,7 +58,7 @@ const Login = () => {
     // Clear user-related data or tokens
     setUserAddress('');
     localStorage.removeItem('userAddress'); // Remove from localStorage
-    console.log("disconnecting");
+    window.location.reload();
   }
   
 
